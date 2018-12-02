@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import net.objecthunter.exp4j.ExpressionBuilder
 import java.lang.Exception
@@ -116,15 +117,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun sisipEkspresi(str: String, operand: Boolean) {
+        var lengTextLayer = textLayer.text.length
+        var maxDigit:Byte = 28
 
         if (textLayer2.text.isNotEmpty()) {
             textLayer.text = ""
         }
 
+
+
         if (operand) {
-//            cekDot(str)
-            textLayer2.text = ""
-            textLayer.append(str)
+            if (lengTextLayer < maxDigit) {
+//              cekDot(str)
+                textLayer2.text = ""
+                textLayer.append(str)
+            } else {
+                Toast.makeText(this@MainActivity, "Maximum number of digit (28)", Toast.LENGTH_SHORT).show()
+            }
         } else {
             textLayer.append(textLayer2.text)
 //            if (str == "*") str = "x"
@@ -132,6 +141,9 @@ class MainActivity : AppCompatActivity() {
             textLayer.append(bantu)
             textLayer2.text = ""
         }
+
+
+
     }
 
     fun btnEqualClicked(v: View) {
