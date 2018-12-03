@@ -89,20 +89,8 @@ class MainActivity : AppCompatActivity() {
         sisipEkspresi("/", false)
     }
 
-    /*  btn clear
-        fun btnClear {
-            textLayer.text = ""
-            textLayer2.text = ""
-        }
-    */
 
-    /* fun cekDot(str:String):String {
-         var string = textLayer.text
-         if (string.takeLast(1) == str) {
-             return ""
-         }
-     }*/
-
+//  Delete and Clear
     fun btnClearClicked(v: View) {
         textLayer.text = ""
         textLayer2.text = ""
@@ -116,36 +104,47 @@ class MainActivity : AppCompatActivity() {
         textLayer2.text = ""
     }
 
+//    Cek digit ke terakhir apakah merupakan Operator
+    fun isOperatorLastDigit(lastDigit:String):Boolean {
+        var x:String = lastDigit
+        var operator:Boolean = false
+        if (x == "x" || x == "÷" || x == "+" || x == "-") {
+            operator = true
+        }
+        return operator
+    }
+
+//    Memasukkan ekspresi kel textLayer
     fun sisipEkspresi(str: String, operand: Boolean) {
         var lengTextLayer = textLayer.text.length
         var maxDigit:Byte = 28
+        var temp = textLayer.text.toString()
+        var bantu = str.replace("*","x").replace("/","÷")
 
         if (textLayer2.text.isNotEmpty()) {
             textLayer.text = ""
         }
 
-
-
         if (operand) {
             if (lengTextLayer < maxDigit) {
-//              cekDot(str)
                 textLayer2.text = ""
                 textLayer.append(str)
             } else {
                 Toast.makeText(this@MainActivity, "Maximum number of digit (28)", Toast.LENGTH_SHORT).show()
             }
         } else {
-            textLayer.append(textLayer2.text)
-//            if (str == "*") str = "x"
-            var bantu = str.replace("*","x").replace("/","÷")
-            textLayer.append(bantu)
-            textLayer2.text = ""
+            if (isOperatorLastDigit(temp.takeLast(1))) {
+                textLayer.text = textLayer.text.substring(0, lengTextLayer-1)
+            } else {
+                textLayer.append(textLayer2.text) // untuk menggabungkan nilai yg sudah ada di textLayer2 (hasil operasi sebelumnya)
+                textLayer2.text = ""
+            }
+                textLayer.append(bantu)
         }
-
-
 
     }
 
+//    sama dengan (=) di klik
     fun btnEqualClicked(v: View) {
         try {
             var bantu = textLayer.text.toString().replace("x","*").replace("÷","/")
