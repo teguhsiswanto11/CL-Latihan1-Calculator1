@@ -104,6 +104,16 @@ class MainActivity : AppCompatActivity() {
         textLayer2.text = ""
     }
 
+//    mencegah duplikat point (.) pada ekspresi
+    fun isMultiPoint(str:String):Boolean {
+//        var str = textLayer.text.toString()
+        var temp:Boolean = str.contains(".", ignoreCase = true)
+        if (temp == true) {
+            return temp
+        }
+        return temp
+    }
+
 //    Cek digit ke terakhir apakah merupakan Operator
     fun isOperatorLastDigit(lastDigit:String):Boolean {
         var x:String = lastDigit
@@ -144,7 +154,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    sama dengan (=) di klik
+//    jika sama dengan (=) di klik
     fun btnEqualClicked(v: View) {
         try {
             var bantu = textLayer.text.toString().replace("x","*").replace("÷","/")
