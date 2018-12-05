@@ -1,16 +1,27 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <!-- No Title Bar -->
+        <!-- No Title Bar-->
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">false</item>
+        <item name="android:background">#fff</item>
     </style>
+
+    <!-- comment
+        <style name="MyTheme" parent="@android:style/Theme.Holo.Light">
+            <item name="android:actionBarStyle">@style/MyActionBar</item>
+        </style>
+
+        <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+            <item name="android:background">#fff</item>
+        </style>
+    -->
 
 
 </resources>

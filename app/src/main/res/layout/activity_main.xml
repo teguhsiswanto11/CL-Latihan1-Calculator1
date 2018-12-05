@@ -11,11 +11,30 @@
             android:id="@+id/atas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
+        <Button
+                android:id="@+id/btnAboutExplicit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\u25CB"
+                android:paddingHorizontal="20dp"
+                android:textColor="#2196F3"
+                android:textSize="36sp"
+                android:background="#fff"/>
+        <Button
+                android:id="@+id/btnAboutImplicit"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\u25CB"
+                android:paddingHorizontal="20dp"
+                android:textColor="#2196F3"
+                android:textSize="36sp"
+                android:background="#fff"/>
         <TextView
                 android:id="@+id/textLayer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/menu"
                 android:minHeight="82dp"
                 android:gravity="right|center_vertical"
                 android:background="#fff"

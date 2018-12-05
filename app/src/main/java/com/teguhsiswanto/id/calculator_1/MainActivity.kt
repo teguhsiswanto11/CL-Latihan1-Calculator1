@@ -1,5 +1,6 @@
 package com.teguhsiswanto.id.calculator_1
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,12 +10,28 @@ import kotlinx.android.synthetic.main.activity_main.*
 import net.objecthunter.exp4j.ExpressionBuilder
 import java.lang.Exception
 
-
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+//        val btnAbout = findViewById<Button>(R.id.btnAbout)
+        val context = this
+
+        btnAboutExplicit.setOnClickListener{
+            val intent = Intent(context, About::class.java)
+            startActivity(intent)
+        }
+
+        btnAboutImplicit.setOnClickListener {
+            var intent = Intent(Intent.ACTION_SEND)
+            intent.putExtra(Intent.EXTRA_TEXT, "Kalkulator Sederhana \nDeveloped by: Siswanto Teguh \n\n" +
+                    "See on github by clicking link below \n https://github.com/teguhsiswanto11/CL-Latihan1-Calculator1")
+            intent.type = "text/plain"
+            startActivity(intent)
+        }
+
 
     }
 
